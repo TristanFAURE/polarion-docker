@@ -60,7 +60,7 @@ expect "Please, set a password for user 'polarion' through which Polarion will c
 send "polarion\n"
 
 # Step 10: Third continuation prompt
-expect -timeout 60 "When you are done press Enter to continue."
+expect "When you are done press Enter to continue."
 expect "Or press \"Ctrl+C\" to halt the script. You can re-run it later."
 send "\n"
 
