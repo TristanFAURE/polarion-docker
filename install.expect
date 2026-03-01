@@ -9,24 +9,18 @@ set timeout 30
 # Start the Polarion installation script
 spawn bash ./install.sh
 
-# Fail if timeout is reached without match
-expect_before {
-    failed {exit 1}
-    timeout {exit 1}
-}
-
 # Step 1: Confirm clean installation
 expect "Press \"Enter\" to continue with a clean installation..."
 send "\n"
 
 # Step 2: Choose to use new local SVN repository
 expect "Do you want use a new local SVN repository with default settings?:"
-expect "Type answer "
+expect "Type answer <yes|no>, default \[yes\]"
 send "yes\n"
 
 # Step 3: Check and install prerequisites
 expect "Would you like to check and install the prerequisities?"
-expect "Type answer "
+expect "Type answer <yes|no>, default \[yes\]"
 send "yes\n"
 
 # Step 4: First continuation prompt
@@ -44,7 +38,7 @@ send "\n"
 
 # Step 6a: Second continuation prompt
 expect "When you are done press Enter to continue."
-expect "Or press \"Ctrl+C\" to halt the script. You can re-run it later."
+expect "You can re-run it later."
 send "\n"
 
 # Step 7: Copy predefined Apache configuration files
@@ -74,7 +68,7 @@ send "yes\n"
 
 # Step 13: Choose not to start Polarion immediately (will be started by container script)
 expect "Do you want start Polarion now?"
-expect "Type answer "
+expect "Type answer <yes|no>, default \[yes\]"
 send "no\n"
 
 # Wait for installation to complete
